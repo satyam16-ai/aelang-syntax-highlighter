@@ -22,17 +22,20 @@
       "id": "aelang",
       "aliases": ["ÆLang", "AELang", "aelang"],
       "extensions": [".ae"],
-      "configuration": "./language-configuration.json",
-      "icon": {
-        "light": "./icon.png",
-        "dark": "./icon.png"
-      }
+      "configuration": "./language-configuration.json"
     }],
     "grammars": [{
       "language": "aelang",
       "scopeName": "source.aelang",
       "path": "./syntaxes/aelang.tmLanguage.json"
-    }]
+    }],
+    "iconThemes": [
+      {
+        "id": "aelang-icons",
+        "displayName": "ÆLang Icons",
+        "path": "./aelang-icon-theme.json"
+      }
+    ]
   },
   "repository": {
     "type": "git",

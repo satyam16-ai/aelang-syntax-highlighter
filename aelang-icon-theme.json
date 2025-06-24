@@ -1,0 +1,10 @@
+{
+  "iconDefinitions": {
+    "_aelang_icon": {
+      "iconPath": "./icon.png"
+    }
+  },
+  "fileExtensions": {
+    "ae": "_aelang_icon"
+  }
+}
