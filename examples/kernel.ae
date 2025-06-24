@@ -1,0 +1,46 @@
+// ÆLang OS Development Example
+// Demonstrates OS-specific constructs
+
+extern print_int(val: i32);
+extern print_float(val: f32);
+
+func kernel_main(): void {
+    // Boot message
+    print("ÆLang OS Kernel v1.0");
+    print("Initializing system...");
+    
+    // Memory calculations
+    let page_size: i32 = 4096;
+    let total_memory: i32 = 134217728; // 128MB
+    let available_pages: i32 = total_memory / page_size;
+    
+    print("System Information:");
+    print("Page size: ");
+    print_int(page_size);
+    print("Total memory: ");
+    print_int(total_memory);
+    print("Available pages: ");
+    print_int(available_pages);
+    
+    // CPU frequency calculation
+    let cpu_freq: f32 = 1000000000.0; // 1 GHz
+    let delay_ms: f32 = 100.0;
+    let cycles: f32 = cpu_freq * delay_ms / 1000.0;
+    
+    print("CPU frequency: ");
+    print_float(cpu_freq);
+    print("Delay cycles: ");
+    print_float(cycles);
+}
+
+// Interrupt handler example
+func timer_interrupt(): void {
+    print("Timer interrupt handled");
+}
+
+// Memory manager
+func allocate_page(): i32 {
+    // Simple page allocation
+    let page_addr: i32 = 0x100000; // 1MB mark
+    return page_addr;
+}
