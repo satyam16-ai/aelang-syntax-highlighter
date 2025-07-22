@@ -1,8 +1,8 @@
 {
   "name": "aelang-language-support",
   "displayName": "ÆLang Language Support",
-  "description": "Syntax highlighting and language support for ÆLang OS development language",
-  "version": "0.0.1",
+  "description": "Complete syntax highlighting for ÆLang with universal type support (i8-i64, u8-u64, f8-f64, num, bool, char) and format specifiers",
+  "version": "0.2.0",
   "publisher": "satyam",
   "engines": {
     "vscode": "^1.101.0"
@@ -18,17 +18,27 @@
     "syntax highlighting"
   ],
   "contributes": {
-    "languages": [{
-      "id": "aelang",
-      "aliases": ["ÆLang", "AELang", "aelang"],
-      "extensions": [".ae"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "aelang",
-      "scopeName": "source.aelang",
-      "path": "./syntaxes/aelang.tmLanguage.json"
-    }],
+    "languages": [
+      {
+        "id": "aelang",
+        "aliases": [
+          "ÆLang",
+          "AELang",
+          "aelang"
+        ],
+        "extensions": [
+          ".ae"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "aelang",
+        "scopeName": "source.aelang",
+        "path": "./syntaxes/aelang.tmLanguage.json"
+      }
+    ],
     "iconThemes": [
       {
         "id": "aelang-icons",
@@ -44,5 +54,8 @@
   "bugs": {
     "url": "https://github.com/satyam/aelang-vscode-extension/issues"
   },
-  "homepage": "https://github.com/satyam/aelang-vscode-extension#readme"
+  "homepage": "https://github.com/satyam/aelang-vscode-extension#readme",
+  "dependencies": {
+    "vsce": "^2.15.0"
+  }
 }

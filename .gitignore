@@ -1,2 +1,4 @@
 node_modules
 *.vsix
+examples/calculator.ae
+examples/kernel.ae

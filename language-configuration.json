@@ -14,14 +14,16 @@
         ["{", "}"],
         ["[", "]"],
         ["(", ")"],
-        ["\"", "\""]
+        ["\"", "\""],
+        ["'", "'"]
     ],
     // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["{", "}"],
         ["[", "]"],
         ["(", ")"],
-        ["\"", "\""]
+        ["\"", "\""],
+        ["'", "'"]
     ],
     // defines how blocks are folded. A language supports folding if at least one of the two following fields is set.
     "folding": {

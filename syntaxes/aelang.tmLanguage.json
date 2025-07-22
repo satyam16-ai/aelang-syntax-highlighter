@@ -13,6 +13,9 @@
       "include": "#types"
     },
     {
+      "include": "#constants"
+    },
+    {
       "include": "#strings"
     },
     {
@@ -62,8 +65,28 @@
     "types": {
       "patterns": [
         {
-          "name": "entity.name.type.primitive.aelang",
-          "match": "\\b(i32|f32|bool|str)\\b"
+          "name": "entity.name.type.primitive.integer.aelang",
+          "match": "\\b(i8|i16|i32|i64|u8|u16|u32|u64)\\b"
+        },
+        {
+          "name": "entity.name.type.primitive.float.aelang",
+          "match": "\\b(f8|f16|f32|f64)\\b"
+        },
+        {
+          "name": "entity.name.type.primitive.special.aelang",
+          "match": "\\b(num|bool|char|str|void)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.aelang",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.language.null.aelang",
+          "match": "\\b(null)\\b"
         }
       ]
     },
@@ -77,6 +100,21 @@
             {
               "name": "constant.character.escape.aelang",
               "match": "\\\\."
+            },
+            {
+              "name": "constant.other.placeholder.format.aelang",
+              "match": "%[dufltc]|%l[du]"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.aelang",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.aelang",
+              "match": "\\\\."
             }
           ]
         }
@@ -86,10 +124,22 @@
       "patterns": [
         {
           "name": "constant.numeric.float.aelang",
-          "match": "\\b\\d+\\.\\d+\\b"
+          "match": "\\b\\d+\\.\\d+([eE][+-]?\\d+)?[fF]?\\b"
         },
         {
-          "name": "constant.numeric.integer.aelang",
+          "name": "constant.numeric.integer.hex.aelang",
+          "match": "\\b0[xX][0-9a-fA-F]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.binary.aelang",
+          "match": "\\b0[bB][01]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.octal.aelang",
+          "match": "\\b0[oO][0-7]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.decimal.aelang",
           "match": "\\b\\d+\\b"
         }
       ]
@@ -117,8 +167,12 @@
     "functions": {
       "patterns": [
         {
-          "name": "entity.name.function.builtin.aelang",
-          "match": "\\b(print|print_int|print_float|read_int|read_float)\\b"
+          "name": "entity.name.function.builtin.io.aelang",
+          "match": "\\b(print|read)\\b"
+        },
+        {
+          "name": "entity.name.function.builtin.legacy.aelang",
+          "match": "\\b(print_int|print_float|print_str|print_bool|print_num|print_clean|read_int|read_float|read_num|read_bool|read_char)\\b"
         },
         {
           "name": "entity.name.function.aelang",
