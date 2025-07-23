@@ -1,8 +1,8 @@
 {
   "name": "aelang-language-support",
   "displayName": "ÆLang Language Support",
-  "description": "Complete syntax highlighting for ÆLang with universal type support (i8-i64, u8-u64, f8-f64, num, bool, char) and format specifiers",
-  "version": "0.2.0",
+  "description": "Complete ÆLang IDE support with syntax highlighting, IntelliSense, diagnostics, and language server integration",
+  "version": "0.3.0",
   "publisher": "satyam",
   "engines": {
     "vscode": "^1.101.0"
@@ -10,13 +10,19 @@
   "categories": [
     "Programming Languages"
   ],
+  "main": "./out/extension.js",
   "keywords": [
     "aelang",
     "systems programming",
     "os development",
     "compiler",
-    "syntax highlighting"
+    "syntax highlighting",
+    "language server",
+    "intellisense",
+    "diagnostics",
+    "auto-completion"
   ],
+  "activationEvents": [],
   "contributes": {
     "languages": [
       {
@@ -45,7 +51,81 @@
         "displayName": "ÆLang Icons",
         "path": "./aelang-icon-theme.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "aelang.restartLanguageServer",
+        "title": "Restart Language Server",
+        "category": "ÆLang"
+      },
+      {
+        "command": "aelang.showOutputChannel",
+        "title": "Show Language Server Output",
+        "category": "ÆLang"
+      },
+      {
+        "command": "aelang.compileFile",
+        "title": "Compile Current File",
+        "category": "ÆLang"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .ae",
+          "command": "aelang.compileFile",
+          "group": "ÆLang"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceExtname == .ae",
+          "command": "aelang.compileFile",
+          "group": "ÆLang"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "ÆLang Language Support",
+      "properties": {
+        "aelang.languageServer.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable the ÆLang language server"
+        },
+        "aelang.languageServer.trace": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Trace level for language server communication"
+        },
+        "aelang.completion.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable auto-completion"
+        },
+        "aelang.diagnostics.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable real-time diagnostics"
+        },
+        "aelang.compiler.path": {
+          "type": "string",
+          "default": "aelang",
+          "description": "Path to the ÆLang compiler executable"
+        },
+        "aelang.welcomeShown": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the welcome message has been shown"
+        }
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -56,6 +136,17 @@
   },
   "homepage": "https://github.com/satyam/aelang-vscode-extension#readme",
   "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/node": "^22.x",
+    "typescript": "^5.6.3",
     "vsce": "^2.15.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
   }
 }

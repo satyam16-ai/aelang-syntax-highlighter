@@ -1,0 +1,44 @@
+{
+  "name": "aelang-language-server",
+  "displayName": "ÆLang Language Server",
+  "description": "Language Server Protocol implementation for ÆLang with IntelliSense, diagnostics, and code completion",
+  "version": "1.0.0",
+  "publisher": "satyam",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "main": "./out/server.js",
+  "keywords": [
+    "aelang",
+    "language-server",
+    "lsp",
+    "intellisense",
+    "auto-completion",
+    "diagnostics"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "start": "node ./out/server.js --stdio",
+    "test": "npm run build && mocha out/test/**/*.js",
+    "clean": "rimraf out",
+    "prepack": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "vscode-uri": "^3.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0",
+    "mocha": "^10.0.0",
+    "@types/mocha": "^10.0.0"
+  },
+  "files": [
+    "out/**",
+    "README.md"
+  ]
+}
